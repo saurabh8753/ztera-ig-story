@@ -1,0 +1,7 @@
+name = "ztera-ig-story"
+main = "src/index.js"
+compatibility_date = "2026-07-20"
+
+[[kv_namespaces]]
+binding = "IG_CACHE"
+id = "YOUR_KV_NAMESPACE_ID"
