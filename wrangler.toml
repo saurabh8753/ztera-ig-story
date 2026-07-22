@@ -1,7 +1,22 @@
 name = "ztera-ig-story"
-main = "src/index.js"
-compatibility_date = "2026-07-20"
+main = "index.js"
+compatibility_date = "2024-11-01"
 
+# KV namespace bind karein — cache, health-status aur rotation pointer ke liye
+# CLI: wrangler kv namespace create CACHE
+# Upar wale command se mila hua "id" niche paste karein.
 [[kv_namespaces]]
-binding = "IG_CACHE"
-id = "a716c83c75fc4d389b6b0280013db0d3"
+binding = "CACHE"
+id = "3628cbecb41840c39f849edbcdb0cc4e"
+
+# Optional non-secret vars (defaults already in code, chahe to override karein)
+[vars]
+CACHE_TTL_SECONDS = "300"
+REQUEST_TIMEOUT_MS = "8000"
+HEALTH_CHECK_USERNAME = "instagram"
+
+# API_LIST secret hai, isko wrangler.toml me mat likhein.
+# Deploy ke baad ye command chalayein:
+#   wrangler secret put API_LIST
+# Jab prompt aaye, comma-separated URLs paste karein, e.g.:
+#   https://igstory.jaanewale6.workers.dev,https://igstory2.jaanewale6.workers.dev,https://igstory3.jaanewale6.workers.dev,https://igstory4.jaanewale6.workers.dev
